@@ -15,6 +15,10 @@ class User < ApplicationRecord
   # TODO: Изменить validates email для multi-tenancy
   validates :email, uniqueness: { case_sensitive: false }
 
+  def is_admin?
+    admin
+  end
+
   private
 
   def set_fullname
