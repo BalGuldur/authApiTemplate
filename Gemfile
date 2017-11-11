@@ -16,11 +16,11 @@ gem 'paranoia', '~> 2.2'
 gem 'rack-cors', :require => 'rack/cors'
 
 # WebSocket server by Faye
-gem 'faye'
+# gem 'faye'
 
 # # Admin panel
-# gem 'rails_admin', '~> 1.2'
-#
+gem 'rails_admin', '~> 1.2'
+
 # # For authentication
 # gem 'devise'
 #
