@@ -1,6 +1,9 @@
 RailsAdmin.config do |config|
   # TODO: Configure devise auth for rails_admin
 
+  ### My configuration
+  config.excluded_models << 'Company'
+
   ### Popular gems integration
 
   ## == Devise ==
@@ -10,8 +13,7 @@ RailsAdmin.config do |config|
   config.current_user_method(&:current_user)
 
   config.authorize_with do
-    # redirect_to main_app.root_path unless current_user.is_admin?
-    redirect_to main_app.new_user_session_path unless current_user.is_admin?
+    redirect_to main_app.root_path unless current_user.is_admin?
     ActsAsTenant.current_tenant = current_user.company
   end
 
@@ -44,5 +46,15 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+  end
+
+  config.model 'User' do
+    list do
+      exclude_fields :fullname
+    end
+
+    edit do
+      exclude_fields :fullname
+    end
   end
 end
