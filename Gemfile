@@ -8,26 +8,21 @@ end
 ## Added gems
 # For manage version api
 gem 'versionist'
-
+# For multi-tenancy
+gem 'acts_as_tenant'
 # For soft delete
 gem 'paranoia', '~> 2.2'
-
 # For config CORS
 gem 'rack-cors', :require => 'rack/cors'
-
 # WebSocket server by Faye
 # gem 'faye'
-
-# # Admin panel
+# Admin panel
 gem 'rails_admin', '~> 1.2'
-
-# # For authentication
+# For authentication
 gem 'devise'
-
-# # For auth with jwt token
+# For auth with jwt token
 # gem 'devise-jwt', '~> 0.4.1'
-#
-# # For auth with VK
+# For auth with VK
 # gem 'omniauth'
 # gem 'omniauth-vkontakte'
 

@@ -32,6 +32,7 @@
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v5.1.4, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v5.1.4, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v5.1.4, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="acts_as_tenant (v0.4.1, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="addressable (v2.5.2, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v8.0.0, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ast (v2.3.0, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
@@ -97,6 +98,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rb-inotify (v0.9.10, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ref (v2.0.0, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="remotipart (v1.3.1, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="request_store (v1.3.2, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="responders (v2.4.0, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop (v0.51.0, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.9.0, RVM: ruby-2.4.1 [Login]) [gem]" level="application" />

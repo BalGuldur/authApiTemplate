@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   mount RailsAdmin::Engine => '/adm_panel', as: 'rails_admin'
   api_version(:module => 'V1', :path => {:value => 'v2'}, :default => true) do
     # Add root route for api
