@@ -9,3 +9,4 @@ krulov:
   name: Aleksandr
   surname: Krulov
   encrypted_password: <%= Devise::Encryptor.digest User, 'qwerty123' %>
+  company: one
