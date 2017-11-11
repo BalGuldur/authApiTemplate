@@ -7,6 +7,10 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '27fbf5978bf587fcb3e24d6d166f16b511998da14cc3dc491c20a8deb561f1c89a4376650cf4142827d976662c513eb08b89e140c78d8510584001af9885e926'
+  config.jwt do |jwt|
+    jwt.secret = Rails.application.secrets.jwt_secret_key
+    # TODO: add jwt.dispatch_request
+  end
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,

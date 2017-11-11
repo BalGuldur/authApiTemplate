@@ -21,7 +21,7 @@ gem 'rails_admin', '~> 1.2'
 # For authentication
 gem 'devise'
 # For auth with jwt token
-# gem 'devise-jwt', '~> 0.4.1'
+gem 'devise-jwt', '~> 0.4.1'
 # For auth with VK
 # gem 'omniauth'
 # gem 'omniauth-vkontakte'

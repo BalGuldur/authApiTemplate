@@ -6,7 +6,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # remove :registrable, :recoverable
-  devise :database_authenticatable, :rememberable, :trackable, :validatable
+  # TODO: Change jwt_revocation_strategy to Blacklist
+  devise :database_authenticatable, :rememberable, :trackable, :validatable,
+         :jwt_authenticatable, jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
 
   belongs_to :company
 
