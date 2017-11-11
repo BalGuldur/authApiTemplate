@@ -5,7 +5,33 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+## Added gems
+# For manage version api
+gem 'versionist'
 
+# For soft delete
+gem 'paranoia', '~> 2.2'
+
+# For config CORS
+gem 'rack-cors', :require => 'rack/cors'
+
+# WebSocket server by Faye
+gem 'faye'
+
+# # Admin panel
+# gem 'rails_admin', '~> 1.2'
+#
+# # For authentication
+# gem 'devise'
+#
+# # For auth with jwt token
+# gem 'devise-jwt', '~> 0.4.1'
+#
+# # For auth with VK
+# gem 'omniauth'
+# gem 'omniauth-vkontakte'
+
+## Auto generate gems
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
@@ -17,7 +43,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -42,6 +68,11 @@ group :development, :test do
 end
 
 group :development do
+  ## Added gems
+  # Code style
+  gem 'rubocop', require: false
+
+  ## Auto generate gems
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
