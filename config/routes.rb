@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Devise routes
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions', registrations: 'users/registrations'
   }
   # check user token route
   devise_scope :user do

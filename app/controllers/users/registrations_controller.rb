@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  respond_to :json
 
   # GET /resource/sign_up
   # def new
@@ -8,9 +9,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # GET /resource/edit
   # def edit
@@ -36,8 +37,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
+  # Create from devise module rewrite method for create company
+  # Create company and add admin
+  def build_resource(hash=nil)
+    # Строка из шаблона
+    self.resource = resource_class.new_with_session(hash || {}, session)
+    # Создание и привязка компании если параметры переданы
+    self.resource.company_id = Company.create(company_params).id if company_params.present?
+    # Добавляем админские права если первый пользователь
+    self.resource.admin = true if self.resource.company && self.resource.company.users.count < 1
+  end
+
+  # Params for create company in sign_up
+  def company_params
+    params.require(:company).permit(:title)
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])

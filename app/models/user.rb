@@ -5,9 +5,9 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  # remove :registrable, :recoverable
+  # remove :registerable, :recoverable
   # TODO: Change jwt_revocation_strategy to Blacklist
-  devise :database_authenticatable, :rememberable, :trackable, :validatable,
+  devise :database_authenticatable, :rememberable, :trackable, :validatable, :registerable,
          :jwt_authenticatable, jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
 
   belongs_to :company
@@ -24,6 +24,6 @@ class User < ApplicationRecord
   private
 
   def set_fullname
-    self.fullname = name + ' ' + surname
+    self.fullname = "#{name} #{surname}"
   end
 end
