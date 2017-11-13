@@ -17,6 +17,7 @@ module AuthApiTemplate
         origins '*'
         resource '/check.json', headers: :any, methods: [:post, :options]
         resource '/users/sign_in.json', headers: :any, methods: [:post], expose: ['Authorization']
+        resource '/users/sign_out.json', headers: :any, methods: [:delete]
         # origins '*'
         # resource '*', headers: :any, methods: [:get, :post, :options]]
       end
