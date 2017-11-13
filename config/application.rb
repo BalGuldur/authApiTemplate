@@ -14,8 +14,11 @@ module AuthApiTemplate
     # RACK CORS gem config
     config.middleware.insert_before 0, Rack::Cors do
       allow do
+        origins '*'
+        resource '/check.json', headers: :any, methods: [:post, :options]
+        resource '/users/sign_in.json', headers: :any, methods: [:post], expose: ['Authorization']
         # origins '*'
-        # resource '*', headers: :any, methods: [:get, :post, :options]
+        # resource '*', headers: :any, methods: [:get, :post, :options]]
       end
     end
 

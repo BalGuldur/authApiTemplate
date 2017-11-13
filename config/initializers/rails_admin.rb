@@ -3,6 +3,7 @@ RailsAdmin.config do |config|
 
   ### My configuration
   config.excluded_models << 'Company'
+  config.excluded_models << 'User'
 
   ### Popular gems integration
 

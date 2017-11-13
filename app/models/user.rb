@@ -1,7 +1,7 @@
 # Model for store user's account
 class User < ApplicationRecord
   acts_as_paranoid
-  acts_as_tenant :company
+  # acts_as_tenant :company
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
