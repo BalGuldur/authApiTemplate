@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   api_version(:module => 'V1', :path => {:value => 'v2'}, :default => true) do
     # Add root route for api
     scope path: '/api' do
-      resources :users, only: [:index] do
+      resources :users, only: [:index, :destroy] do
       end
     end
   end

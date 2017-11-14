@@ -15,12 +15,12 @@ module AuthApiTemplate
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '/check.json', headers: :any, methods: [:post, :options]
-        resource '/users/sign_in.json', headers: :any, methods: [:post], expose: ['Authorization']
-        resource '/users/sign_out.json', headers: :any, methods: [:delete]
-        resource '/users.json', headers: :any, methods: [:post], expose: ['Authorization']
+        # resource '/check.json', headers: :any, methods: [:post, :options]
+        # resource '/users/sign_in.json', headers: :any, methods: [:post], expose: ['Authorization']
+        # resource '/users/sign_out.json', headers: :any, methods: [:delete]
+        # resource '/users.json', headers: :any, methods: [:get, :post], expose: ['Authorization']
         # origins '*'
-        # resource '*', headers: :any, methods: [:get, :post, :options]]
+        resource '*', headers: :any, methods: [:get, :post, :options, :delete], expose: ['Authorization']
       end
     end
 
