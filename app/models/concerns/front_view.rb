@@ -1,23 +1,7 @@
 # rubocop:disable Style/AsciiComments
-# Концерн для добавления стандартного front_view в модели
+# Add front_view in models
 concern :FrontView do # rubocop:disable Metrics/BlockLength
-  # def model_name_camelize
-  #   model_name.name.pluralize.camelize(:lower)
-  # end
-  #
-  # def names_ids
-  #   refs.map do |ref|
-  #     if ref[:type] == 'many'
-  #       ref[:model].singularize + '_ids'
-  #     elsif ref[:type] == 'one'
-  #       ref[:model] + '_ids'
-  #     end
-  #   end
-  # end
-
   def front_view(*options)
-  # def front_view(options = {})
-  #   puts options.as_json
     return json_front if options.include? :without_id
     return { id => json_front } if options.include? :without_model_name
     return { self.class.model_name_camelize => { id => json_front } } if options.include? :without_child
@@ -38,13 +22,24 @@ concern :FrontView do # rubocop:disable Metrics/BlockLength
     as_json(methods: self.class.names_ids)
   end
 
-  # методы класса
   module ClassMethods
+    def front_view(*options)
+      f_v = {}
+      includes(names_inc).find_each do |item|
+        f_v.merge!(item.front_view(:without_model_name))
+      end
+      f_v = { model_name_camelize => f_v }
+      return f_v if options.include? :without_child
+      add_items f_v
+      f_v
+    end
+
     def model_name_camelize
       model_name.name.pluralize.camelize(:lower)
     end
 
-    def names_ids # имена для добавления ids в каждую json_front запись
+    # names for add _ids in all model instance
+    def names_ids
       refs.map do |ref|
         if ref[:type] == 'many'
           ref[:model].singularize + '_ids'
@@ -54,12 +49,13 @@ concern :FrontView do # rubocop:disable Metrics/BlockLength
       end
     end
 
-    def names_inc # имена для include и добавления дочерних объектов в collection и instance front_view
-      # selectRefs = refs.select { |ref| ref[:index_inc] == true }
+    # names for include child objects in collection and instance front_view
+    def names_inc
       refs.map { |ref| ref[:model] }
     end
 
-    def ref_names # имена для построения дочерних веток объектов в collection
+    # names for child tree in collection
+    def ref_names
       refs.map { |ref| ref[:model].camelize.singularize }
     end
 
@@ -91,17 +87,6 @@ concern :FrontView do # rubocop:disable Metrics/BlockLength
                          .where(rev_where_name(ref) => { id: [ids] })
         f_v.merge!(@add_items.front_view(:without_child))
       end
-      f_v
-    end
-
-    def front_view(*options)
-      f_v = {}
-      includes(names_inc).find_each do |item|
-        f_v.merge!(item.front_view(:without_model_name))
-      end
-      f_v = { model_name_camelize => f_v }
-      return f_v if options.include? :without_child
-      add_items f_v
       f_v
     end
   end
