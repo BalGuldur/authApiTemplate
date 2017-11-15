@@ -31,7 +31,7 @@ class User < ApplicationRecord
   # rewrite destroy, becourse before_destroy rollback don't work with acts_as_paranoid
   def destroy
     if last_user?
-      errors[:base] << 'Невозможно удалить последнего пользователя'
+      errors[:error] << 'Невозможно удалить последнего пользователя'
       false
     else
       super

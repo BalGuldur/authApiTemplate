@@ -1,4 +1,5 @@
 class V1::UsersController < V1::BaseController
+  before_action :authenticate_user!
   before_action :set_user, only: [:destroy]
   respond_to :json
 
@@ -13,7 +14,6 @@ class V1::UsersController < V1::BaseController
     else
       render json: @user.errors, status: 400
     end
-    # render json: @user.front_view, status: :ok
   end
 
   private
