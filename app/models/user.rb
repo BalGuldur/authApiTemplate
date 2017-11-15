@@ -28,7 +28,21 @@ class User < ApplicationRecord
     admin
   end
 
+  # rewrite destroy, becourse before_destroy rollback don't work with acts_as_paranoid
+  def destroy
+    if last_user?
+      errors[:base] << 'Невозможно удалить последнего пользователя'
+      false
+    else
+      super
+    end
+  end
+
   private
+
+  def last_user?
+    company.users.count < 2
+  end
 
   def set_fullname
     self.fullname = "#{name} #{surname}"
