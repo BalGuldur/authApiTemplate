@@ -1,5 +1,6 @@
 # Model for store user's account
 class User < ApplicationRecord
+  # TODO: Add FrontView test
   include FrontView
   acts_as_paranoid
   acts_as_tenant :company
