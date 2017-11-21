@@ -16,6 +16,15 @@ class V1::UsersController < V1::BaseController
     end
   end
 
+  def invite
+    @user_invite = User.invite user_params
+    if @user_invite
+      render json: @user.front_view, status: :ok
+    else
+      render json: @user.errors, status: 400
+    end
+  end
+
   private
 
   def set_user

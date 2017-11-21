@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     # Add root route for api
     scope path: '/api' do
       resources :users, only: [:index, :destroy] do
+        post 'invite', on: :collection
       end
     end
   end
