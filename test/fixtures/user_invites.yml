@@ -1,11 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  deleted_at: 2017-11-22 00:22:58
-  user: 
-  token: MyString
+first:
+  employee: {'email': 'uniq_test3@test.com', 'name': 'Aleksandr', 'surname': 'Krulov'}
+  company: one
+  creator: users(:krulov)
+  token: test
 
-two:
-  deleted_at: 2017-11-22 00:22:58
-  user: 
-  token: MyString

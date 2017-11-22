@@ -26,7 +26,7 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test 'check uniq user email without case sensivity' do
+  test 'check uniq user email case insensivity' do
     user = User.new test_user_params
     user.email = users(:krulov).email.upcase
     assert_not user.save
