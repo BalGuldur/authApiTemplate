@@ -1,4 +1,3 @@
-# TODO: Add creator for UserInvite
 # TODO: Remove token from front view
 class UserInvite < ApplicationRecord
   include FrontView
