@@ -11,6 +11,9 @@ class UserInvite < ApplicationRecord
   validate :email_must_be_presence_and_uniq
 
   def email_must_be_presence_and_uniq
+    # TODO: User Add multi-tenancy on one user
+    # TODO: User check on User.invite work only with one tenant
+    # TODO: User change error str to i18n str
     errors.add(:employee, 'Email обязательное поле') unless
       employee['email'].present?
     errors.add(:employee, 'Пользователь с email уже существует') if
@@ -29,18 +32,8 @@ class UserInvite < ApplicationRecord
   end
 
   def send_invite
-    # TODO: User Add multi-tenancy on one user
-    # TODO: User check on User.invite work only with one tenant
     gen_token
-    save!
-    # if User.find_by(email: user['email'])
-    #   # TODO: User change error str to i18n str
-    #   errors.add(:error, 'Пользователь уже существует')
-    #   false
-    # else
-    #   gen_token
-    #   save!
-    # end
+    save
   end
 
   private
