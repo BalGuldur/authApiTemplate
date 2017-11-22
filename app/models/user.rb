@@ -25,10 +25,6 @@ class User < ApplicationRecord
     []
   end
 
-  def self.invite user_params
-
-  end
-
   def is_admin?
     admin
   end

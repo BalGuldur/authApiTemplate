@@ -17,11 +17,11 @@ class V1::UsersController < V1::BaseController
   end
 
   def invite
-    @user_invite = User.invite user_params
-    if @user_invite
-      render json: @user.front_view, status: :ok
+    @user_invite = UserInvite.new(user: user_params, creator_id: current_user.id)
+    if @user_invite.send_invite
+      render json: @user_invite.front_view, status: :ok
     else
-      render json: @user.errors, status: 400
+      render json: @user_invite.errors, status: 400
     end
   end
 
@@ -29,5 +29,9 @@ class V1::UsersController < V1::BaseController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :surname, :email)
   end
 end

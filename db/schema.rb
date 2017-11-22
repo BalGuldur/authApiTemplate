@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111160154) do
+ActiveRecord::Schema.define(version: 20171122105917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 20171111160154) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_companies_on_deleted_at"
+  end
+
+  create_table "user_invites", force: :cascade do |t|
+    t.datetime "deleted_at"
+    t.json "user"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.integer "creator_id"
+    t.index ["company_id"], name: "index_user_invites_on_company_id"
+    t.index ["deleted_at"], name: "index_user_invites_on_deleted_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,5 +60,7 @@ ActiveRecord::Schema.define(version: 20171111160154) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "user_invites", "companies"
+  add_foreign_key "user_invites", "users", column: "creator_id"
   add_foreign_key "users", "companies"
 end
