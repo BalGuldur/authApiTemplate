@@ -32,6 +32,7 @@ class UserInvite < ApplicationRecord
   end
 
   def send_invite
+    # TODO: Add check employee and email not empty
     set_token
     # TODO: Add send email with invite
     save
@@ -40,7 +41,6 @@ class UserInvite < ApplicationRecord
   private
 
   def set_token
-    # TODO: UserInvite - generate token, add check user not empty
     self.token = Token.gen_invite self
   end
 end
