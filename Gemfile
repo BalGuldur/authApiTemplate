@@ -22,6 +22,9 @@ gem 'rails_admin', '~> 1.2'
 gem 'devise'
 # For auth with jwt token
 gem 'devise-jwt', '~> 0.4.1'
+# For generate jwt in invites and other functional
+# uncomment if remove devise-jwt gem
+# gem 'jwt'
 # For auth with VK
 # gem 'omniauth'
 # gem 'omniauth-vkontakte'
