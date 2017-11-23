@@ -41,7 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # Create from devise module rewrite method for create company
   # Create company and add admin
-  def build_resource(hash=nil)
+  def build_resource(hash = nil)
     # Строка из шаблона
     self.resource = resource_class.new_with_session(hash || {}, session)
     # Создание и привязка компании если параметры переданы

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         post 'invite', on: :collection
       end
       resources :user_invites, only: [:index, :destroy] do
+        post 'registration', on: :collection
       end
     end
   end

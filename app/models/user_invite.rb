@@ -38,6 +38,14 @@ class UserInvite < ApplicationRecord
     save
   end
 
+  def reg reg_params
+    # TODO: FIRST Remove UserInvite
+    ActsAsTenant.current_tenant = company
+    @user = User.new(employee)
+    @user.attributes = reg_params
+    return @user
+  end
+
   private
 
   def set_token
