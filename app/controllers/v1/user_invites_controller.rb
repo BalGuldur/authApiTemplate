@@ -19,6 +19,7 @@ class V1::UserInvitesController < V1::BaseController
     render json: {error: 'Некорректный токен'}, status: 400 if @user_invite.blank?
     @user = @user_invite.reg reg_params
     if @user.save
+      @user_invite.destroy
       # TODO: Add set current user, return Auth header
       render json: @user.front_view, status: :ok
     else
@@ -33,7 +34,9 @@ class V1::UserInvitesController < V1::BaseController
   end
 
   def set_user_inv_by_token
-    @user_invite = UserInvite.find_by(token: params[:token])
+    payload = Token.decode(params[:token])
+    puts payload
+    @user_invite = UserInvite.find(payload['user_invite']['id'])
   end
 
   def reg_params

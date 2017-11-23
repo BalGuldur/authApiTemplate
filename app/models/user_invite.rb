@@ -4,6 +4,8 @@ class UserInvite < ApplicationRecord
   acts_as_paranoid
   acts_as_tenant :company
 
+  after_create :set_token
+
   belongs_to :company
   belongs_to :creator, class_name: 'User'
 
@@ -32,10 +34,13 @@ class UserInvite < ApplicationRecord
   end
 
   def send_invite
-    # TODO: Add check employee and email not empty
-    set_token
-    # TODO: Add send email with invite
-    save
+    if save
+      # TODO: Add send email with invite
+      # send_invite_email
+      true
+    else
+      false
+    end
   end
 
   def reg reg_params
@@ -49,6 +54,9 @@ class UserInvite < ApplicationRecord
   private
 
   def set_token
-    self.token = Token.gen_invite self
+    # self.token = Token.gen user_invite: self.as_json
+    update_column :token, Token.gen(
+      user_invite: as_json(only: :id)
+    )
   end
 end

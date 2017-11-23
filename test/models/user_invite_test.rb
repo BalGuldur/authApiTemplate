@@ -44,6 +44,9 @@ class UserInviteTest < ActiveSupport::TestCase
     ActsAsTenant.current_tenant = nil
   end
 
+  # TODO: Add test form user_invite reg, send_invite
+  # TODO: Add test gen token on save
+
   private
 
   def test_user_invite_params
