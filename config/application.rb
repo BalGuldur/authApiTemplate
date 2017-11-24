@@ -23,7 +23,8 @@ module AuthApiTemplate
         resource '/api/users/invite.json', headers: :any, methods: [:post]
         resource '/api/users/*.json', headers: :any, methods: [:delete]
         resource '/api/user_invites.json', headers: :any, methods: [:get]
-        resource '/api/user_invites/registration.json', headers: :any, methods: [:post]
+        # TODO: Check why not expose Authorization for registration
+        resource '/api/user_invites/registration.json', headers: :any, methods: [:post], expose: ['Authorization']
         resource '/api/user_invites/*.json', headers: :any, methods: [:delete]
         # origins '*'
         # resource '*', headers: :any, methods: [:get, :post, :options, :delete], expose: ['Authorization']

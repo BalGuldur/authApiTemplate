@@ -10,13 +10,17 @@ Devise.setup do |config|
   config.jwt do |jwt|
     jwt.secret = Rails.application.secrets.jwt_secret_key
     # TODO: add jwt.dispatch_request
+    # TODO: Check neeed gen auth header on check.json
+    # TODO: Check why not expose authorization header on registration
+    # ['GET', %r{^/check.json$}],
     jwt.dispatch_requests = [
-        ['POST', %r{^/users/sign_in.json$}],
-        ['POST', %r{^/users.json$}],
-        ['GET', %r{^/check.json$}]
+      ['POST', %r{^/users/sign_in.json$}],
+      ['POST', %r{^/users.json$}],
+      ['GET', %r{^/check.json$}],
+      ['POST', %r{^/api/user_invites/registration.json$}]
     ]
     jwt.revocation_requests = [
-        ['DELETE', %r{^/users/sign_out.json$}]
+      ['DELETE', %r{^/users/sign_out.json$}]
     ]
   end
 
