@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  socialUserId: 1
+  platform: MyString
+  user: one
+
+two:
+  socialUserId: 1
+  platform: MyString
+  user: two

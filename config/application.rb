@@ -20,6 +20,7 @@ module AuthApiTemplate
         resource '/users/sign_out.json', headers: :any, methods: [:delete]
         resource '/users.json', headers: :any, methods: [:post], expose: ['Authorization']
         resource '/api/users.json', headers: :any, methods: [:get]
+        resource '/api/users/add_social_account.json', headers: :any, methods: [:post]
         resource '/api/users/invite.json', headers: :any, methods: [:post]
         resource '/api/users/*.json', headers: :any, methods: [:delete]
         resource '/api/user_invites.json', headers: :any, methods: [:get]

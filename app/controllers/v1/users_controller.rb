@@ -28,6 +28,17 @@ class V1::UsersController < V1::BaseController
     end
   end
 
+  def add_social_account
+    # TODO: Rewrite social auth, to check auth from backend
+    @social_acc = SocialAccount.new(social_params)
+    @social_acc.user_id = current_user.id
+    if @social_acc.save
+      render json: 'ok', status: :ok
+    else
+      render json: @social_acc.errors, status: 400
+    end
+  end
+
   private
 
   def set_user
@@ -36,5 +47,9 @@ class V1::UsersController < V1::BaseController
 
   def user_params
     params.require(:user).permit(:name, :surname, :email)
+  end
+
+  def social_params
+    params.permit(:socialUserId, :platform)
   end
 end

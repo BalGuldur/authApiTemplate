@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122210758) do
+ActiveRecord::Schema.define(version: 20171128140055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20171122210758) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_companies_on_deleted_at"
+  end
+
+  create_table "social_accounts", force: :cascade do |t|
+    t.integer "socialUserId"
+    t.string "platform"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_social_accounts_on_user_id"
   end
 
   create_table "user_invites", force: :cascade do |t|
@@ -60,6 +69,7 @@ ActiveRecord::Schema.define(version: 20171122210758) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "social_accounts", "users"
   add_foreign_key "user_invites", "companies"
   add_foreign_key "user_invites", "users", column: "creator_id"
   add_foreign_key "users", "companies"

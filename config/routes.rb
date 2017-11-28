@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     scope path: '/api' do
       resources :users, only: [:index, :destroy] do
         post 'invite', on: :collection
+        post 'add_social_account', on: :collection
       end
       resources :user_invites, only: [:index, :destroy] do
         post 'registration', on: :collection
