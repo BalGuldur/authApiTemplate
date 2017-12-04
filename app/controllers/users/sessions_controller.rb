@@ -13,6 +13,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def sign_in_with_vk
+    # TODO: Add check vk registration
     @social_account = SocialAccount.where(platform: 'vk').find_by(vk_params)
     @user = @social_account.user
     if @user.present?
