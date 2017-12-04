@@ -12,7 +12,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :rememberable, :trackable, :validatable, :registerable,
          :jwt_authenticatable, jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
 
-  has_many :user_invites
+  has_many :user_invites, dependent: :destroy
+  has_many :social_accounts, dependent: :destroy
   belongs_to :company
 
   before_save :set_fullname
@@ -23,7 +24,7 @@ class User < ApplicationRecord
   # Model links for generate front veiw
   # { model: '', type: 'many/one', rev_type: 'many/one', index_inc: true/false }
   def self.refs
-    []
+    [ model: 'social_accounts', type: 'many', rev_type: 'one', index_inc: true]
   end
 
   def is_admin?

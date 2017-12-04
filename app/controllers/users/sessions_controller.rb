@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
   # Check user token
   def check
     if user_signed_in?
-      render json: current_user, status: :ok
+      render json: current_user.front_view['users'][current_user.id], status: :ok
     else
       render json: {}, status: :unauthorized
     end

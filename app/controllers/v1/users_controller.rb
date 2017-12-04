@@ -18,8 +18,8 @@ class V1::UsersController < V1::BaseController
 
   def invite
     @user_invite = UserInvite.new(
-        employee: user_params,
-        creator_id: current_user.id
+      employee: user_params,
+      creator_id: current_user.id
     )
     if @user_invite.send_invite
       render json: @user_invite.front_view, status: :ok
