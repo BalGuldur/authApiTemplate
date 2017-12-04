@@ -12,6 +12,19 @@ class Users::SessionsController < Devise::SessionsController
     end
   end
 
+  def sign_in_with_vk
+    @social_account = SocialAccount.where(platform: 'vk').find_by(vk_params)
+    @user = @social_account.user
+    if @user.present?
+      sign_in @user
+      # sign_in = @user
+      render json: @user.front_view, status: :ok
+    else
+      # TODO: Change string to i18n
+      render json: 'Не авторизован', status: 404
+    end
+  end
+
   # GET /resource/sign_in
   # def new
   #   super
@@ -32,4 +45,10 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  #
+  private
+
+  def vk_params
+    params.permit(:socialUserId)
+  end
 end

@@ -1,4 +1,5 @@
 class V1::UsersController < V1::BaseController
+  include Devise::Controllers::Helpers
   before_action :authenticate_user!
   before_action :set_user, only: [:destroy]
   respond_to :json

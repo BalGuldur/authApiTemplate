@@ -16,8 +16,9 @@ class V1::UserInvitesController < V1::BaseController
   end
 
   def registration
-    render json: {error: 'Некорректный токен'}, status: 400 if @user_invite.blank?
+    render json: { error: 'Некорректный токен' }, status: 400 if @user_invite.blank?
     @user = @user_invite.reg reg_params
+    sign_in(@user)
     if @user.save
       @user_invite.destroy
       # TODO: Add set current user, return Auth header

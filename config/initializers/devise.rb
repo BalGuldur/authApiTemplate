@@ -17,6 +17,7 @@ Devise.setup do |config|
       ['POST', %r{^/users/sign_in.json$}],
       ['POST', %r{^/users.json$}],
       ['GET', %r{^/check.json$}],
+      ['POST', %r{^/sign_in_with_vk.json$}],
       ['POST', %r{^/api/user_invites/registration.json$}]
     ]
     jwt.revocation_requests = [

@@ -1,6 +1,27 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # RACK CORS gem config
+  # config.middleware.insert_before 0, Rack::Cors do
+  #   allow do
+  #     origins '*'
+  #     resource '/check.json', headers: :any, methods: [:post, :options]
+  #     resource '/users/sign_in.json', headers: :any, methods: [:post], expose: ['Authorization']
+  #     resource '/users/sign_out.json', headers: :any, methods: [:delete]
+  #     resource '/users.json', headers: :any, methods: [:post], expose: ['Authorization']
+  #     resource '/api/users.json', headers: :any, methods: [:get]
+  #     resource '/api/users/add_social_account.json', headers: :any, methods: [:post]
+  #     resource '/api/users/invite.json', headers: :any, methods: [:post]
+  #     resource '/api/users/*.json', headers: :any, methods: [:delete]
+  #     resource '/api/user_invites.json', headers: :any, methods: [:get]
+  #     # TODO: Check why not expose Authorization for registration
+  #     resource '/api/user_invites/registration.json', headers: :any, methods: [:post], expose: ['Authorization']
+  #     resource '/api/user_invites/*.json', headers: :any, methods: [:delete]
+  #     # origins '*'
+  #     # resource '*', headers: :any, methods: [:get, :post, :options, :delete], expose: ['Authorization']
+  #   end
+  # end
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
